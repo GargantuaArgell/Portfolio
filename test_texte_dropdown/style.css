@@ -1,23 +1,28 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-size: 14px;
-    font-family: Arial, sans-serif;
-    background-color: grey;
-    background-size: cover;
-    min-height: 100vh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
 * {
     margin: 0;
     padding: 0;
-}
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #333333;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      font-family: 'Gabarito', sans-serif;
+      flex-direction: column;
+      font-size: 30px;
+      overflow-x:hidden;
+      scrollbar-width: 0px;
+      -ms-overflow-style: none;
+  }
+  
+  body::-webkit-scrollbar {
+      display: none;
+  }
+
 
 .wrapper{
     display: flex;
@@ -51,9 +56,6 @@ body {
     z-index: 1;
 }
 
-/*TODO : faire en sorte que le label prenne 85% de la largeur de la fenetre
-*/
-
 .collapsible label:after{
     /*Pour changer la flèche*/
     content: "";
@@ -67,7 +69,7 @@ body {
 }
 
 .collapsible input:checked + label:after{
-        /*Pour changer la flèche*/
+    /*Pour changer la flèche*/
     transform: rotate(90deg);
 }
 
@@ -84,7 +86,7 @@ body {
 }
 
 .collapsible input:checked ~ .collapsible-text {
-    max-height: 300px;
+    max-height: 500px;
     padding-bottom: 25px;
     background: #fff;
     box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 11px 0 rgba(0,0,0,.1);
@@ -109,3 +111,165 @@ article {
     border-bottom: #fff solid;
 
 }
+
+
+.nav_bar_menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80px;
+    background-color: black;
+    padding: 0.4rem 0.8rem;
+    transition: all 0.5s ease;
+    z-index: 10;
+  }
+  
+  .nav_bar_menu .top_logo .nav-logo-top {
+    color: #fff;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  .nav_bar_menu.active .top_logo .nav-logo-top {
+    opacity: 1;
+  }
+  
+  .top_logo .nav-logo-top i {
+    font-size: 2rem;
+    margin-right: 5px;
+  }
+  
+  .nav_bar_menu #nav-btn-burger {
+    position: absolute;
+    color: #fff;
+    top: .4rem;
+    left: 50%;
+    font-size: 1.2rem;
+    line-height: 50px;
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+  
+  .nav_bar_menu.active #nav-btn-burger {
+    left: 90%;
+  }
+  
+  .user-img{
+    width: 50px;
+    border-radius: 100%;
+    border: 1px solid #eee;
+  }
+  
+  .user {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+  }
+  
+  .user p {
+    color: #fff;
+    opacity: 1;
+    margin-left: 1rem;
+  }
+  
+  .bold {
+    font-weight: 600;
+  }
+  
+  .nav_bar_menu p {
+    opacity: 0;
+  }
+  
+  .nav_bar_menu.active p {
+    opacity: 1;
+  }
+  
+  /*Pour essayer de mettre els élément li au milieu de la page a refaire*/
+  .nav_bar_menu ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  
+  }
+  
+  .nav_bar_menu ul li {
+    position: relative;
+    list-style-type: none;
+    height: 50px;
+    width: 90%;
+    margin: 0.8rem auto;
+    line-height: 50px;
+  }
+  
+  .nav_bar_menu ul li a {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+  }
+  
+  .nav_bar_menu ul li a:hover{
+    background-color: #fff;
+    color: black;
+  }
+  
+  .nav_bar_menu ul li a i {
+    min-width: 50px;
+    text-align: center;
+    height: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+  }
+  
+  .nav_bar_menu .nav-menu-items {
+    display: none;
+  }
+  
+  .nav_bar_menu.active .nav-menu-items {
+    display: block;
+  }
+  
+  .nav_bar_menu ul li .nav-menu-tooltip{
+    position: absolute;
+    background-color: grey;
+    left: 125px;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2);
+    border-radius: .6rem;
+    padding: .4rem 1.2rem;
+    line-height: 1.8rem;
+    z-index: 20;
+    opacity: 0;
+    color: white;
+  
+    /*Code du prof pour gérer le pointer qui change quand on passe sur le lien*/
+    pointer-events: none;
+  
+  }
+  
+  .nav_bar_menu ul li a:hover + .nav-menu-tooltip{
+    opacity: 1;
+    z-index: 20;
+  }
+  
+  
+  .nav_bar_menu.nav_bar_menu.active ul li .nav-menu-tooltip{
+    display: none;
+  }
+  
+  .nav_bar_menu.active {
+    width: 250px;
+  }
+  
+  .nav_bar_menu.active ~.main-content {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+  

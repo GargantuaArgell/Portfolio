@@ -202,12 +202,13 @@ body::-webkit-scrollbar {
   width: 250px;
 }
 
+/*Pour déplacer le contenu du main que l'on met dans un div "main-content" quand la nav bar est active*/
 .nav_bar_menu.active ~.main-content {
   left: 250px;
   width: calc(100% - 250px);
 }
 
-
+/*Fin du css pour le nav*/
 
 .overlay{
   width: 100%;

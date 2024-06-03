@@ -21,56 +21,51 @@
 
     <main>
 
-        <div class="sidebar">
-            <div class="top">
-                <div class="logo">
+        <div class="nav_bar_menu">
+            <div class="top_logo">
+                <div class="nav-logo-top">
                     <i class='bx bx-bitcoin'></i>
                     <span>Portfolio</span>
                 </div>
-                <i class="bx bx-menu" id="btn"></i>
+                <i class="bx bx-menu" id="nav-btn-burger"></i>
             </div>
             <div class="user">
                 <img src="../../image/img.png" alt="logo" class="user-img">
                 <div>
-                    <p class="bold">Client B.</p>
-                    <p>Admin</p>
+                    <p class="bold">GRANDET</p>
+                    <p>Félix</p>
                 </div>
             </div>
             <ul>
                 <li>
                     <a href="#">
                         <i class='bx bx-user'></i>
-                        <span class="nav-items">Profil</span>
+                        <span class="nav-menu-items">Profil</span>
                     </a>
-                    <span class="tooltip">Profil</span>
+                    <span class="nav-menu-tooltip">Profil</span>
                 </li>
                 <li>
                     <a href="#">
                         <i class='bx bx-code-curly'></i>
-                        <span class="nav-items">Projet</span>
+                        <span class="nav-menu-items">Projet</span>
                     </a>
-                    <span class="tooltip">Projet</span>
+                    <span class="nav-menu-tooltip">Projet</span>
                 </li>
                 <li>
                     <a href="#">
                         <i class='bx bxs-certification'></i>
-                        <span class="nav-items">Qualification</span>
+                        <span class="nav-menu-items">Qualification</span>
                     </a>
-                    <span class="tooltip">Qualification</span>
+                    <span class="nav-menu-tooltip">Qualification</span>
                 </li>
                 <li>
                     <a href="#">
                         <i class='bx bxs-contact'></i>
-                        <span class="nav-items">Contact</span>
+                        <span class="nav-menu-items">Contact</span>
                     </a>
-                    <span class="tooltip">Contact</span>
+                    <span class="nav-menu-tooltip">Contact</span>
                 </li>
             </ul>
-        </div>
-
-        <div class="overlay">
-            <canvas id="canvas1"></canvas>
-
         </div>
 
         <section class="profile-section">
@@ -87,14 +82,13 @@
             </button>
 
         </section>
-
         <img src="../../image/profil.jpg" alt="profil" id="profile-picture">
 
     </main>
 
     <footer>
         <ul class="liste-tripple">
-            <li class="icon-content">
+            <li class="nav-icon-content">
               <a
                 href="https://linkedin.com/"
                 aria-label="LinkedIn"
@@ -116,9 +110,9 @@
                   ></path>
                 </svg>
               </a>
-              <div class="tooltip">LinkedIn</div>
+              <div class="nav-icon-tooltip">LinkedIn</div>
             </li>
-            <li class="icon-content">
+            <li class="nav-icon-content">
               <a href="https://www.github.com/" aria-label="GitHub" data-social="github">
                 <div class="filled"></div>
                 <svg
@@ -136,10 +130,10 @@
               ></path>
             </svg>
           </a>
-          <div class="tooltip">GitHub</div>
+          <div class="nav-icon-tooltip">GitHub</div>
         </li>
 
-        <li class="icon-content">
+        <li class="nav-icon-content">
             <a href="mailto:example@example.com" aria-label="Email" data-social="email">
               <div class="filled"></div>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
@@ -151,19 +145,24 @@
                 </svg>
 
                 </a>
-            <div class="tooltip">Email</div>
+            <div class="nav-icon-tooltip">Email</div>
             </li>
 
         </ul>
     </footer>
+
+    <div class="overlay">
+        <canvas id="canvas1"></canvas>
+    </div>
+
 </body>
 
 <script>
-    let btn = document.querySelector('#btn')
-    let sidebar = document.querySelector('.sidebar')
+    let nav_btn_burger = document.querySelector('#nav-btn-burger')
+    let nav_bar_menu = document.querySelector('.nav_bar_menu')
 
-    btn.onclick = function () {
-        sidebar.classList.toggle('active');
+    nav_btn_burger.onclick = function () {
+        nav_bar_menu.classList.toggle('active');
     };
 
     setTimeout(() => {

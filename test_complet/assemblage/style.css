@@ -14,6 +14,12 @@ body {
     flex-direction: column;
     font-size: 30px;
     overflow-x:hidden;
+    scrollbar-width: 0px;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 .background1 {
@@ -41,7 +47,7 @@ body {
 }
 
 
-.sidebar{
+.nav_bar_menu{
   position: absolute;
   top: 0;
   left: 0;
@@ -50,9 +56,10 @@ body {
   background-color: black;
   padding: 0.4rem 0.8rem;
   transition: all 0.5s ease;
+  z-index: 10;
 }
 
-.sidebar .top .logo {
+.nav_bar_menu .top_logo .nav-logo-top {
   color: #fff;
   display: flex;
   height: 50px;
@@ -62,16 +69,16 @@ body {
   opacity: 0;
 }
 
-.sidebar.active .top .logo {
+.nav_bar_menu.active .top_logo .nav-logo-top {
   opacity: 1;
 }
 
-.top .logo i {
+.top_logo .nav-logo-top i {
   font-size: 2rem;
   margin-right: 5px;
 }
 
-.sidebar #btn {
+.nav_bar_menu #nav-btn-burger {
   position: absolute;
   color: #fff;
   top: .4rem;
@@ -80,9 +87,9 @@ body {
   line-height: 50px;
   transform: translateX(-50%);
   cursor: pointer;
-} 
+}
 
-.sidebar.active #btn {
+.nav_bar_menu.active #nav-btn-burger {
   left: 90%;
 }
 
@@ -108,16 +115,16 @@ body {
   font-weight: 600;
 }
 
-.sidebar p {
+.nav_bar_menu p {
   opacity: 0;
 }
 
-.sidebar.active p {
+.nav_bar_menu.active p {
   opacity: 1;
 }
 
 /*Pour essayer de mettre els élément li au milieu de la page a refaire*/
-.sidebar ul {
+.nav_bar_menu ul {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -125,7 +132,7 @@ body {
 
 }
 
-.sidebar ul li {
+.nav_bar_menu ul li {
   position: relative;
   list-style-type: none;
   height: 50px;
@@ -134,7 +141,7 @@ body {
   line-height: 50px;
 }
 
-.sidebar ul li a {
+.nav_bar_menu ul li a {
   color: #fff;
   display: flex;
   align-items: center;
@@ -142,12 +149,12 @@ body {
   border-radius: 0.8rem;
 }
 
-.sidebar ul li a:hover{
+.nav_bar_menu ul li a:hover{
   background-color: #fff;
   color: black;
 }
 
-.sidebar ul li a i {
+.nav_bar_menu ul li a i {
   min-width: 50px;
   text-align: center;
   height: 50px;
@@ -155,16 +162,17 @@ body {
   line-height: 50px;
 }
 
-.sidebar .nav-items {
+.nav_bar_menu .nav-menu-items {
   display: none;
 }
 
-.sidebar.active .nav-items {
+.nav_bar_menu.active .nav-menu-items {
   display: block;
 }
 
-.sidebar ul li .tooltip{
+.nav_bar_menu ul li .nav-menu-tooltip{
   position: absolute;
+  background-color: grey;
   left: 125px;
   transform: translate(-50%, -50%);
   box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2);
@@ -173,26 +181,28 @@ body {
   line-height: 1.8rem;
   z-index: 20;
   opacity: 0;
+  color: white;
 
   /*Code du prof pour gérer le pointer qui change quand on passe sur le lien*/
   pointer-events: none;
 
 }
 
-.sidebar ul li a:hover + .tooltip{
+.nav_bar_menu ul li a:hover + .nav-menu-tooltip{
   opacity: 1;
+  z-index: 20;
 }
 
 
-.sidebar.sidebar.active ul li .tooltip{
+.nav_bar_menu.nav_bar_menu.active ul li .nav-menu-tooltip{
   display: none;
 }
 
-.sidebar.active {
+.nav_bar_menu.active {
   width: 250px;
 }
 
-.sidebar.active ~.main-content {
+.nav_bar_menu.active ~.main-content {
   left: 250px;
   width: calc(100% - 250px);
 }
@@ -207,6 +217,7 @@ body {
   left: 0px;
   transition: all 0.5s;
   background-color: black;
+  z-index: 10000;
 
 }
 
@@ -253,7 +264,7 @@ section {
     position: absolute;
     top: 40%;
     bottom: 20px;
-    left: 5%;
+    left: 200px;
     width: 55%;
     background-color: black;
     padding: 20px;
@@ -328,11 +339,11 @@ footer {
   justify-content: center;
   align-items: center;
 }
-.liste-tripple .icon-content {
+.liste-tripple .nav-icon-content {
   margin: 0 10px;
   position: relative;
 }
-.liste-tripple .icon-content .tooltip {
+.liste-tripple .nav-icon-content .nav-icon-tooltip {
   position: absolute;
   top: -30px;
   left: 50%;
@@ -345,12 +356,12 @@ footer {
   font-size: 23px;
   transition: all 0.3s ease;
 }
-.liste-tripple .icon-content:hover .tooltip {
+.liste-tripple .nav-icon-content:hover .nav-icon-tooltip {
   opacity: 1;
   visibility: visible;
   top: -50px;
 }
-.liste-tripple .icon-content a {
+.liste-tripple .nav-icon-content a {
   position: relative;
   overflow: hidden;
   display: flex;
@@ -363,20 +374,20 @@ footer {
   background-color: #fff;
   transition: all 0.3s ease-in-out;
 }
-.liste-tripple .icon-content a:hover {
+.liste-tripple .nav-icon-content a:hover {
   box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
 }
-.liste-tripple .icon-content a svg {
+.liste-tripple .nav-icon-content a svg {
   position: relative;
   z-index: 1;
   width: 30px;
   height: 30px;
 }
-.liste-tripple .icon-content a:hover {
+.liste-tripple .nav-icon-content a:hover {
   color: white;
 }
 
-.liste-tripple .icon-content a .filled {
+.liste-tripple .nav-icon-content a .filled {
   position: absolute;
   top: auto;
   bottom: 0;
@@ -386,7 +397,7 @@ footer {
   background-color: #000;
   transition: all 0.3s ease-in-out;
 }
-.liste-tripple .icon-content a:hover .filled {
+.liste-tripple .nav-icon-content a:hover .filled {
   height: 100%;
 }
 
@@ -399,13 +410,13 @@ footer {
   }
 }
 
-.liste-tripple .icon-content a[data-social="linkedin"] .filled,
-.liste-tripple .icon-content a[data-social="linkedin"] ~ .tooltip {
+.liste-tripple .nav-icon-content a[data-social="linkedin"] .filled,
+.liste-tripple .nav-icon-content a[data-social="linkedin"] ~ .nav-icon-tooltip {
   background-color: transparent; /* On rend le fond transparent pour que l'animation du dégradé soit visible */
 }
 
-.liste-tripple .icon-content a[data-social="linkedin"]:hover .filled,
-.liste-tripple .icon-content a[data-social="linkedin"]:hover ~ .tooltip {
+.liste-tripple .nav-icon-content a[data-social="linkedin"]:hover .filled,
+.liste-tripple .nav-icon-content a[data-social="linkedin"]:hover ~ .nav-icon-tooltip {
   animation: linkedin-color 1s linear forwards;
 }
 
@@ -418,13 +429,13 @@ footer {
   }
 }
 
-.liste-tripple .icon-content a[data-social="github"] .filled,
-.liste-tripple .icon-content a[data-social="github"] ~ .tooltip {
+.liste-tripple .nav-icon-content a[data-social="github"] .filled,
+.liste-tripple .nav-icon-content a[data-social="github"] ~ .nav-icon-tooltip {
   background-color: transparent; /* On rend le fond transparent pour que l'animation du dégradé soit visible */
 }
 
-.liste-tripple .icon-content a[data-social="github"]:hover .filled,
-.liste-tripple .icon-content a[data-social="github"]:hover ~ .tooltip {
+.liste-tripple .nav-icon-content a[data-social="github"]:hover .filled,
+.liste-tripple .nav-icon-content a[data-social="github"]:hover ~ .nav-icon-tooltip {
   animation: gradient-bg 1s linear forwards;
 }
 
@@ -442,14 +453,14 @@ footer {
   }
 }
 
-.liste-tripple .icon-content a[data-social="email"] .filled,
-.liste-tripple .icon-content a[data-social="email"] ~ .tooltip {
+.liste-tripple .nav-icon-content a[data-social="email"] .filled,
+.liste-tripple .nav-icon-content a[data-social="email"] ~ .nav-icon-tooltip {
   background: linear-gradient(45deg, violet, indigo, blue, green);
   background-size: 400% 400%;
 }
 
-.liste-tripple .icon-content a[data-social="email"]:hover .filled,
-.liste-tripple .icon-content a[data-social="email"]:hover ~ .tooltip {
+.liste-tripple .nav-icon-content a[data-social="email"]:hover .filled,
+.liste-tripple .nav-icon-content a[data-social="email"]:hover ~ .nav-icon-tooltip {
   animation: rainbow 3s infinite alternate;
 }
 

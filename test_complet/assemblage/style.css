@@ -1,0 +1,315 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-family: 'Gabarito', sans-serif;
+    flex-direction: column;
+    font-size: 30px;
+}
+
+.background1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white; /* Remplacez 'votre_image1.jpg' par le chemin de votre première image */
+    background-size: cover;
+    opacity: 0.2; /* Opacité de 12% */
+    z-index: -1; /* Assurez-vous que cette superposition est en arrière-plan */
+}
+
+.background2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background : black; /* Remplacez 'votre_image2.jpg' par le chemin de votre deuxième image */
+    background-size: cover;
+    opacity: 1; /* Opacité de 12% */
+    z-index: -2; /* Assurez-vous que cette superposition est en arrière-plan */
+}
+
+
+.sidebar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80px;
+  background-color: black;
+  padding: 0.4rem 0.8rem;
+  transition: all 0.5s ease;
+}
+
+.sidebar .top .logo {
+  color: #fff;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sidebar.active .top .logo {
+  opacity: 1;
+}
+
+.top .logo i {
+  font-size: 2rem;
+  margin-right: 5px;
+}
+
+.sidebar #btn {
+  position: absolute;
+  color: #fff;
+  top: .4rem;
+  left: 50%;
+  font-size: 1.2rem;
+  line-height: 50px;
+  transform: translateX(-50%);
+  cursor: pointer;
+}  
+
+.sidebar.active #btn {
+  left: 90%;
+}
+
+.user-img{
+  width: 50px;
+  border-radius: 100%;
+  border: 1px solid #eee;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.user p {
+  color: #fff;
+  opacity: 1;
+  margin-left: 1rem;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.sidebar p {
+  opacity: 0;
+}
+
+.sidebar.active p {
+  opacity: 1;
+}
+
+/*Pour essayer de mettre els élément li au milieu de la page a refaire*/
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  
+}
+
+.sidebar ul li {
+  position: relative;
+  list-style-type: none;
+  height: 50px;
+  width: 90%;
+  margin: 0.8rem auto;
+  line-height: 50px;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 0.8rem;
+}
+
+.sidebar ul li a:hover{
+  background-color: #fff;
+  color: black;
+}
+
+.sidebar ul li a i {
+  min-width: 50px;
+  text-align: center;
+  height: 50px;
+  border-radius: 12px;
+  line-height: 50px;
+}
+
+.sidebar .nav-items {
+  display: none;
+}
+
+.sidebar.active .nav-items {
+  display: block;
+}
+
+.sidebar ul li .tooltip{
+  position: absolute;
+  left: 125px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2);
+  border-radius: .6rem;
+  padding: .4rem 1.2rem;
+  line-height: 1.8rem;
+  z-index: 20;
+  opacity: 0;
+
+  /*Code du prof pour gérer le pointer qui change quand on passe sur le lien*/
+  pointer-events: none;
+
+}
+
+.sidebar ul li a:hover + .tooltip{
+  opacity: 1;
+}
+
+
+.sidebar.sidebar.active ul li .tooltip{
+  display: none;
+}
+
+.sidebar.active {
+  width: 250px;
+}
+
+.sidebar.active ~.main-content {
+  left: 250px;
+  width: calc(100% - 250px);
+}
+
+
+
+.overlay{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transition: all 0.5s;
+  background-color: black;
+
+}
+
+.overlay.hidden{
+  transform: translateY(-100%);
+}
+
+
+
+a {
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    width: 200px;
+    top: 150px;
+    left: 200px;
+    background: rgba(50, 50, 50, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 20px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 20%;
+}
+
+header h1 {
+    color: white;
+    padding-left: 20%;
+    font-size: 50px;
+    font-weight: 600;
+    border-bottom: white 10px solid;
+
+}
+
+#profile-picture {
+    width: 25%;
+    max-width: 300px;
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    border-radius: 25%;
+    border: white 10px solid;
+}
+
+section {
+    position: absolute;
+    top: 40%;
+    bottom: 20px;
+    left: 5%;
+    width: 55%;
+    background-color: black;
+    padding: 20px;
+    border: 1px solid #000;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 20px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+    color: white;
+}
+
+.cv {
+    border: none;
+    width: 15em;
+    height: 5em;
+    border-radius: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background: #1C1A1C;
+    cursor: pointer;
+    transition: all 450ms ease-in-out;
+    position: absolute;
+    bottom: 60px;
+    right: 60px;
+
+}
+
+  .sparkle {
+    fill: white;
+    transition: all 800ms ease;
+    width: 32px;
+    height: 32px;
+  }
+
+  .text {
+    font-weight: 600;
+    color: white;
+    font-size: medium;
+  }
+
+  .cv:hover {
+    background: linear-gradient(0deg,#A47CF3,#683FEA);
+    box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+    inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+    0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+    0px 0px 180px 0px #9917FF;
+    transform: translateY(-2px);
+  }
+
+  .cv:hover .text {
+    color: white;
+  }
+
+  .cv:hover .sparkle {
+    fill: white;
+    transform: scale(1.2);
+}
+
+
+

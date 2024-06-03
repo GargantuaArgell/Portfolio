@@ -13,14 +13,15 @@ body {
     font-family: 'Gabarito', sans-serif;
     flex-direction: column;
     font-size: 30px;
+    overflow-x:hidden;
 }
 
 .background1 {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    bottom: 0;
+    right: 0;
     background: white; /* Remplacez 'votre_image1.jpg' par le chemin de votre première image */
     background-size: cover;
     opacity: 0.2; /* Opacité de 12% */
@@ -31,8 +32,8 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    bottom: 0;
+    right: 0;
     background : black; /* Remplacez 'votre_image2.jpg' par le chemin de votre deuxième image */
     background-size: cover;
     opacity: 1; /* Opacité de 12% */
@@ -79,7 +80,7 @@ body {
   line-height: 50px;
   transform: translateX(-50%);
   cursor: pointer;
-}  
+} 
 
 .sidebar.active #btn {
   left: 90%;
@@ -121,7 +122,7 @@ body {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  
+
 }
 
 .sidebar ul li {
@@ -312,4 +313,143 @@ section {
 }
 
 
+ul {
+  list-style: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+}
+
+.liste-tripple {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.liste-tripple .icon-content {
+  margin: 0 10px;
+  position: relative;
+}
+.liste-tripple .icon-content .tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 23px;
+  transition: all 0.3s ease;
+}
+.liste-tripple .icon-content:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+  top: -50px;
+}
+.liste-tripple .icon-content a {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #4d4d4d;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+.liste-tripple .icon-content a:hover {
+  box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+}
+.liste-tripple .icon-content a svg {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+}
+.liste-tripple .icon-content a:hover {
+  color: white;
+}
+
+.liste-tripple .icon-content a .filled {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: #000;
+  transition: all 0.3s ease-in-out;
+}
+.liste-tripple .icon-content a:hover .filled {
+  height: 100%;
+}
+
+@keyframes linkedin-color {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: #0274b3;
+  }
+}
+
+.liste-tripple .icon-content a[data-social="linkedin"] .filled,
+.liste-tripple .icon-content a[data-social="linkedin"] ~ .tooltip {
+  background-color: transparent; /* On rend le fond transparent pour que l'animation du dégradé soit visible */
+}
+
+.liste-tripple .icon-content a[data-social="linkedin"]:hover .filled,
+.liste-tripple .icon-content a[data-social="linkedin"]:hover ~ .tooltip {
+  animation: linkedin-color 1s linear forwards;
+}
+
+@keyframes gradient-bg {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: #24262a;
+  }
+}
+
+.liste-tripple .icon-content a[data-social="github"] .filled,
+.liste-tripple .icon-content a[data-social="github"] ~ .tooltip {
+  background-color: transparent; /* On rend le fond transparent pour que l'animation du dégradé soit visible */
+}
+
+.liste-tripple .icon-content a[data-social="github"]:hover .filled,
+.liste-tripple .icon-content a[data-social="github"]:hover ~ .tooltip {
+  animation: gradient-bg 1s linear forwards;
+}
+
+
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.liste-tripple .icon-content a[data-social="email"] .filled,
+.liste-tripple .icon-content a[data-social="email"] ~ .tooltip {
+  background: linear-gradient(45deg, violet, indigo, blue, green);
+  background-size: 400% 400%;
+}
+
+.liste-tripple .icon-content a[data-social="email"]:hover .filled,
+.liste-tripple .icon-content a[data-social="email"]:hover ~ .tooltip {
+  animation: rainbow 3s infinite alternate;
+}
 

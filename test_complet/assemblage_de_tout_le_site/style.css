@@ -1,0 +1,467 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-family: 'Gabarito', sans-serif;
+    flex-direction: column;
+    font-size: 30px;
+    overflow-x:hidden;
+    scrollbar-width: 0px;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.background1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: white; /* Remplacez 'votre_image1.jpg' par le chemin de votre première image */
+    background-size: cover;
+    opacity: 0.2; /* Opacité de 12% */
+    z-index: -1; /* Assurez-vous que cette superposition est en arrière-plan */
+}
+
+.background2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background : black; /* Remplacez 'votre_image2.jpg' par le chemin de votre deuxième image */
+    background-size: cover;
+    opacity: 1; /* Opacité de 12% */
+    z-index: -2; /* Assurez-vous que cette superposition est en arrière-plan */
+}
+
+
+.nav_bar_menu{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80px;
+  background-color: black;
+  padding: 0.4rem 0.8rem;
+  transition: all 0.5s ease;
+  z-index: 10;
+}
+
+.nav_bar_menu .top_logo .nav-logo-top {
+  color: #fff;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.nav_bar_menu.active .top_logo .nav-logo-top {
+  opacity: 1;
+}
+
+.top_logo .nav-logo-top i {
+  font-size: 2rem;
+  margin-right: 5px;
+}
+
+.nav_bar_menu #nav-btn-burger {
+  position: absolute;
+  color: #fff;
+  top: .4rem;
+  left: 50%;
+  font-size: 1.2rem;
+  line-height: 50px;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.nav_bar_menu.active #nav-btn-burger {
+  left: 90%;
+}
+
+.user-img{
+  width: 50px;
+  border-radius: 100%;
+  border: 1px solid #eee;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.user p {
+  color: #fff;
+  opacity: 1;
+  margin-left: 1rem;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.nav_bar_menu p {
+  opacity: 0;
+}
+
+.nav_bar_menu.active p {
+  opacity: 1;
+}
+
+/*Pour essayer de mettre els élément li au milieu de la page a refaire*/
+.nav_bar_menu ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.nav_bar_menu ul li {
+  position: relative;
+  list-style-type: none;
+  height: 50px;
+  width: 90%;
+  margin: 0.8rem auto;
+  line-height: 50px;
+}
+
+.nav_bar_menu ul li a {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 0.8rem;
+}
+
+.nav_bar_menu ul li a:hover{
+  background-color: #fff;
+  color: black;
+}
+
+.nav_bar_menu ul li a i {
+  min-width: 50px;
+  text-align: center;
+  height: 50px;
+  border-radius: 12px;
+  line-height: 50px;
+}
+
+.nav_bar_menu .nav-menu-items {
+  display: none;
+}
+
+.nav_bar_menu.active .nav-menu-items {
+  display: block;
+}
+
+.nav_bar_menu ul li .nav-menu-tooltip{
+  position: absolute;
+  background-color: grey;
+  left: 125px;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2);
+  border-radius: .6rem;
+  padding: .4rem 1.2rem;
+  line-height: 1.8rem;
+  z-index: 20;
+  opacity: 0;
+  color: white;
+
+  /*Code du prof pour gérer le pointer qui change quand on passe sur le lien*/
+  pointer-events: none;
+
+}
+
+.nav_bar_menu ul li a:hover + .nav-menu-tooltip{
+  opacity: 1;
+  z-index: 20;
+}
+
+
+.nav_bar_menu.nav_bar_menu.active ul li .nav-menu-tooltip{
+  display: none;
+}
+
+.nav_bar_menu.active {
+  width: 250px;
+}
+
+/*Pour déplacer le contenu du main que l'on met dans un div "main-content" quand la nav bar est active*/
+.nav_bar_menu.active ~.main-content {
+  left: 250px;
+  width: calc(100% - 250px);
+}
+
+/*Fin du css pour le nav*/
+
+.overlay{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transition: all 0.5s;
+  background-color: black;
+  z-index: 10000;
+
+}
+
+.overlay.hidden{
+  transform: translateY(-100%);
+}
+
+
+
+a {
+    text-decoration: none;
+}
+
+header {
+    position: fixed;
+    width: 200px;
+    top: 150px;
+    left: 200px;
+    background: rgba(50, 50, 50, 0.1);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 20px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 20%;
+}
+
+header h1 {
+    color: white;
+    padding-left: 20%;
+    font-size: 50px;
+    font-weight: 600;
+    border-bottom: white 10px solid;
+
+}
+
+#profile-picture {
+    width: 25%;
+    max-width: 300px;
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    border-radius: 25%;
+    border: white 10px solid;
+}
+
+section {
+    position: absolute;
+    top: 40%;
+    bottom: 20px;
+    left: 200px;
+    width: 55%;
+    background-color: black;
+    padding: 20px;
+    border: 1px solid #000;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2), 0 20px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+    color: white;
+}
+
+.cv {
+    border: none;
+    width: 15em;
+    height: 5em;
+    border-radius: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background: #1C1A1C;
+    cursor: pointer;
+    transition: all 450ms ease-in-out;
+    position: absolute;
+    bottom: 60px;
+    right: 60px;
+
+}
+
+  .sparkle {
+    fill: white;
+    transition: all 800ms ease;
+    width: 32px;
+    height: 32px;
+  }
+
+  .text {
+    font-weight: 600;
+    color: white;
+    font-size: medium;
+  }
+
+  .cv:hover {
+    background: linear-gradient(0deg,#A47CF3,#683FEA);
+    box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+    inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+    0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+    0px 0px 180px 0px #9917FF;
+    transform: translateY(-2px);
+  }
+
+  .cv:hover .text {
+    color: white;
+  }
+
+  .cv:hover .sparkle {
+    fill: white;
+    transform: scale(1.2);
+}
+
+
+ul {
+  list-style: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+}
+
+.liste-tripple {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.liste-tripple .nav-icon-content {
+  margin: 0 10px;
+  position: relative;
+}
+.liste-tripple .nav-icon-content .nav-icon-tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 23px;
+  transition: all 0.3s ease;
+}
+.liste-tripple .nav-icon-content:hover .nav-icon-tooltip {
+  opacity: 1;
+  visibility: visible;
+  top: -50px;
+}
+.liste-tripple .nav-icon-content a {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #4d4d4d;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+.liste-tripple .nav-icon-content a:hover {
+  box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+}
+.liste-tripple .nav-icon-content a svg {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+}
+.liste-tripple .nav-icon-content a:hover {
+  color: white;
+}
+
+.liste-tripple .nav-icon-content a .filled {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: #000;
+  transition: all 0.3s ease-in-out;
+}
+.liste-tripple .nav-icon-content a:hover .filled {
+  height: 100%;
+}
+
+@keyframes linkedin-color {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: #0274b3;
+  }
+}
+
+.liste-tripple .nav-icon-content a[data-social="linkedin"] .filled,
+.liste-tripple .nav-icon-content a[data-social="linkedin"] ~ .nav-icon-tooltip {
+  background-color: transparent; /* On rend le fond transparent pour que l'animation du dégradé soit visible */
+}
+
+.liste-tripple .nav-icon-content a[data-social="linkedin"]:hover .filled,
+.liste-tripple .nav-icon-content a[data-social="linkedin"]:hover ~ .nav-icon-tooltip {
+  animation: linkedin-color 1s linear forwards;
+}
+
+@keyframes gradient-bg {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: #24262a;
+  }
+}
+
+.liste-tripple .nav-icon-content a[data-social="github"] .filled,
+.liste-tripple .nav-icon-content a[data-social="github"] ~ .nav-icon-tooltip {
+  background-color: transparent; /* On rend le fond transparent pour que l'animation du dégradé soit visible */
+}
+
+.liste-tripple .nav-icon-content a[data-social="github"]:hover .filled,
+.liste-tripple .nav-icon-content a[data-social="github"]:hover ~ .nav-icon-tooltip {
+  animation: gradient-bg 1s linear forwards;
+}
+
+
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.liste-tripple .nav-icon-content a[data-social="email"] .filled,
+.liste-tripple .nav-icon-content a[data-social="email"] ~ .nav-icon-tooltip {
+  background: linear-gradient(45deg, violet, indigo, blue, green);
+  background-size: 400% 400%;
+}
+
+.liste-tripple .nav-icon-content a[data-social="email"]:hover .filled,
+.liste-tripple .nav-icon-content a[data-social="email"]:hover ~ .nav-icon-tooltip {
+  animation: rainbow 3s infinite alternate;
+}
+

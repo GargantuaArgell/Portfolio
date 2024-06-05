@@ -1,0 +1,8 @@
+Page d'acceeil
+page de contact
+page de ce que l'on a déjà fais
+décrire tout les projet fais a l'iut
+forme et fond important
+langage libre peu importe le langage
+code de la page pas évaluer
+règle des 5 secondes --> la page doit chargée en moins de 5 secondes

@@ -1,0 +1,459 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #333333;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-family: 'Gabarito', sans-serif;
+    flex-direction: column;
+    font-size: 30px;
+    overflow-x:hidden;
+    scrollbar-width: 0px;
+    -ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/*Début du nav*/
+
+  .nav_bar_menu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80px;
+    background-color: black;
+    padding: 0.4rem 0.8rem;
+    transition: all 0.5s ease;
+    z-index: 60;
+  }
+
+  .nav_bar_menu .top_logo .nav-logo-top {
+    color: #fff;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  .nav_bar_menu.active .top_logo .nav-logo-top {
+    opacity: 1;
+  }
+
+  .top_logo .nav-logo-top i {
+    font-size: 2rem;
+    margin-right: 5px;
+  }
+
+  .nav_bar_menu #nav-btn-burger {
+    position: absolute;
+    color: #fff;
+    top: .4rem;
+    left: 50%;
+    font-size: 1.2rem;
+    line-height: 50px;
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+
+  .nav_bar_menu.active #nav-btn-burger {
+    left: 90%;
+  }
+
+  .user-img{
+    width: 50px;
+    border-radius: 100%;
+    border: 1px solid #eee;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+    pointer-events: none;
+  }
+
+  .user p {
+    color: #fff;
+    opacity: 1;
+    margin-left: 1rem;
+  }
+
+  .bold {
+    font-weight: 600;
+  }
+
+  .nav_bar_menu p {
+    opacity: 0;
+  }
+
+  .nav_bar_menu.active p {
+    opacity: 1;
+  }
+
+  /*Pour essayer de mettre els élément li au milieu de la page a refaire*/
+  .nav_bar_menu ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+  }
+
+  .nav_bar_menu ul li {
+    position: relative;
+    list-style-type: none;
+    height: 50px;
+    width: 90%;
+    margin: 0.8rem auto;
+    line-height: 50px;
+  }
+
+  .nav_bar_menu ul li a {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 0.8rem;
+  }
+
+  .nav_bar_menu ul li a:hover{
+    background-color: #fff;
+    color: black;
+  }
+
+  .nav_bar_menu ul li a i {
+    min-width: 50px;
+    text-align: center;
+    height: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+  }
+
+  .nav_bar_menu .nav-menu-items {
+    display: none;
+  }
+
+  .nav_bar_menu.active .nav-menu-items {
+    display: block;
+  }
+
+  .nav_bar_menu ul li .nav-menu-tooltip{
+    position: absolute;
+    background-color: grey;
+    left: 125px;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.2);
+    border-radius: .6rem;
+    padding: .4rem 1.2rem;
+    line-height: 1.8rem;
+    z-index: 20;
+    opacity: 0;
+    color: white;
+
+    /*Code du prof pour gérer le pointer qui change quand on passe sur le lien*/
+    pointer-events: none;
+
+  }
+
+  .nav_bar_menu ul li a:hover + .nav-menu-tooltip{
+    opacity: 1;
+    z-index: 20;
+  }
+
+
+  .nav_bar_menu.nav_bar_menu.active ul li .nav-menu-tooltip{
+    display: none;
+  }
+
+  .nav_bar_menu.active {
+    width: 250px;
+  }
+
+  .nav_bar_menu.active ~.main-content {
+    left: 250px;
+    width: calc(100% - 250px);
+  }
+
+  /*Fin du nav*/
+
+.wrapper{
+    display: flex;
+    padding-top: 50px;
+    justify-content: center;
+
+}
+
+.collapsible{
+    overflow: hidden;
+    font-weight: 500;
+}
+
+.collapsible input {
+    display: none;
+}
+
+.collapsible label {
+    font-size: 40px;
+    position : relative;
+    width: 85%;
+    font-weight: 600;
+    background: #fff;
+    color: #1c1c6b;
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+    z-index: 50;
+}
+
+.collapsible label:after{
+    /*Pour changer la flèche*/
+    content: "";
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    width: 18px;
+    height: 18px;
+/* background: ; */
+    transition: all 0.3s ease;
+}
+
+.collapsible input:checked + label:after{
+    /*Pour changer la flèche*/
+    transform: rotate(90deg);
+}
+
+.collapsible-text{
+    max-height: 1px;
+    overflow: hidden;
+    border-radius: 4px;
+    line-height: 1.4;
+    position: relative;
+    top: -100%;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+
+}
+
+.collapsible input:checked ~ .collapsible-text {
+    max-height: 500px;
+    padding-bottom: 25px;
+    background: white;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 11px 0 rgba(0,0,0,.1);
+    opacity: 1;
+    top: 0;
+    font-size: 20px;
+}
+
+.collapsible input:checked ~ .collapsible-text#openfoodfact{
+  max-height: 600px;
+  padding-bottom: 25px;
+  background: white;
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 11px 0 rgba(0,0,0,.1);
+  opacity: 1;
+  top: 0;
+  font-size: 20px;
+}
+
+.collapsible input:checked ~ .collapsible-text#imb{
+  max-height: 600px;
+  padding-bottom: 25px;
+  background: white;
+  box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 11px 0 rgba(0,0,0,.1);
+  opacity: 1;
+  top: 0;
+  font-size: 20px;
+}
+
+.collapsible-text h2 {
+    margin-bottom: 10px ;
+    padding: 15px 15px 0;
+    color: black;
+}
+
+.collapsible-text p {
+    padding-left: 15px;
+    padding-right: 15px;
+    color: black;
+}
+
+article {
+    padding-bottom: 20px;
+    max-width: 85%;
+    border-bottom: black solid;
+
+}
+
+/*Style du fond*/
+.overlay{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  transition: all 0.5s;
+  background-color: black;
+  z-index: 10000;
+
+}
+
+.overlay.hidden{
+  transform: translateY(-100%);
+}
+
+
+/*Style du footer*/
+
+ul {
+  list-style: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+}
+
+.liste-tripple {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.liste-tripple .nav-icon-content {
+  margin: 0 10px;
+  position: relative;
+}
+.liste-tripple .nav-icon-content .nav-icon-tooltip {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 23px;
+  transition: all 0.3s ease;
+}
+.liste-tripple .nav-icon-content:hover .nav-icon-tooltip {
+  opacity: 1;
+  visibility: visible;
+  top: -50px;
+}
+.liste-tripple .nav-icon-content a {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #4d4d4d;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+.liste-tripple .nav-icon-content a:hover {
+  box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 12%);
+}
+.liste-tripple .nav-icon-content a svg {
+  position: relative;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+}
+.liste-tripple .nav-icon-content a:hover {
+  color: white;
+}
+
+.liste-tripple .nav-icon-content a .filled {
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: #000;
+  transition: all 0.3s ease-in-out;
+}
+.liste-tripple .nav-icon-content a:hover .filled {
+  height: 100%;
+}
+
+@keyframes linkedin-color {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: #0274b3;
+  }
+}
+
+.liste-tripple .nav-icon-content a[data-social="linkedin"] .filled,
+.liste-tripple .nav-icon-content a[data-social="linkedin"] ~ .nav-icon-tooltip {
+  background-color: transparent; /* On rend le fond transparent pour que l'animation du dégradé soit visible */
+}
+
+.liste-tripple .nav-icon-content a[data-social="linkedin"]:hover .filled,
+.liste-tripple .nav-icon-content a[data-social="linkedin"]:hover ~ .nav-icon-tooltip {
+  animation: linkedin-color 1s linear forwards;
+}
+
+@keyframes gradient-bg {
+  0% {
+    background-color: white;
+  }
+  100% {
+    background-color: #24262a;
+  }
+}
+
+.liste-tripple .nav-icon-content a[data-social="github"] .filled,
+.liste-tripple .nav-icon-content a[data-social="github"] ~ .nav-icon-tooltip {
+  background-color: transparent; /* On rend le fond transparent pour que l'animation du dégradé soit visible */
+}
+
+.liste-tripple .nav-icon-content a[data-social="github"]:hover .filled,
+.liste-tripple .nav-icon-content a[data-social="github"]:hover ~ .nav-icon-tooltip {
+  animation: gradient-bg 1s linear forwards;
+}
+
+
+
+@keyframes rainbow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.liste-tripple .nav-icon-content a[data-social="email"] .filled,
+.liste-tripple .nav-icon-content a[data-social="email"] ~ .nav-icon-tooltip {
+  background: linear-gradient(45deg, violet, indigo, blue, green);
+  background-size: 400% 400%;
+}
+
+.liste-tripple .nav-icon-content a[data-social="email"]:hover .filled,
+.liste-tripple .nav-icon-content a[data-social="email"]:hover ~ .nav-icon-tooltip {
+  animation: rainbow 3s infinite alternate;
+}
+

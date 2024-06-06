@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+body {
+    background-color: #333333;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      font-family: 'Gabarito', sans-serif;
+      flex-direction: column;
+      overflow-x:hidden;
+      scrollbar-width: 0px;
+      -ms-overflow-style: none;
+  }
+
+body::-webkit-scrollbar {
+      display: none;
+  }
+
+  
+  .wrapper#titanic{
+    margin-top: 200px;
+  }
+  
+  .wrapper{
+      display: flex;
+      padding-top: 50px;
+      justify-content: center;
+  
+  }
+  
+  .collapsible{
+      overflow: hidden;
+      font-weight: 500;
+  }
+  
+  .collapsible input {
+      display: none;
+  }
+  
+  .collapsible label {
+      font-size: 40px;
+      position : relative;
+      width: 85%;
+      font-weight: 600;
+      background: #fff;
+      color: #1c1c6b;
+      display: block;
+      margin-bottom: 10px;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 15px;
+      z-index: 50;
+  }
+  
+  .collapsible label:after{
+      /*Pour changer la flèche*/
+      content: "";
+      position: absolute;
+      right: 15px;
+      top: 20px;
+      width: 18px;
+      height: 18px;
+  /* background: ; */
+      transition: all 0.3s ease;
+  }
+  
+  .collapsible input:checked + label:after{
+      /*Pour changer la flèche*/
+      transform: rotate(90deg);
+  }
+  
+  .collapsible-text{
+      max-height: 1px;
+      overflow: hidden;
+      border-radius: 20px;
+      line-height: 1.4;
+      position: relative;
+      top: -100%;
+      opacity: 0.5;
+      transition: all 0.3s ease;
+
+  }
+
+  .collapsible input:checked ~ .collapsible-text {
+      max-height: 500px;
+      padding-bottom: 25px;
+      background: white;
+      box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 11px 0 rgba(0,0,0,.1);
+      opacity: 1;
+      top: 0;
+      font-size: 20px;
+  }
+
+  .collapsible input:checked ~ .collapsible-text#openfoodfact{
+    max-height: 600px;
+    padding-bottom: 25px;
+    background: white;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 11px 0 rgba(0,0,0,.1);
+    opacity: 1;
+    top: 0;
+    font-size: 20px;
+  }
+
+  .collapsible input:checked ~ .collapsible-text#imb{
+    max-height: 600px;
+    padding-bottom: 25px;
+    background: white;
+    box-shadow: 0 5px 11px 0 rgba(0,0,0,.1), 0 4px 11px 0 rgba(0,0,0,.1);
+    opacity: 1;
+    top: 0;
+    font-size: 20px;
+  }
+  
+  .collapsible-text h2 {
+      margin-bottom: 10px ;
+      padding: 15px 15px 0;
+      color: black;
+  }
+  
+  .collapsible-text p {
+      padding-left: 15px;
+      padding-right: 15px;
+      color: black;
+  }
+  
+  article {
+      padding-bottom: 20px;
+      max-width: 85%;
+      border-bottom: black solid;
+  
+  }
+
+.partie {
+    width: 100%;
+    height: 550px;
+    max-width: 820px;
+    background-color: grey;
+    overflow: hidden;
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    z-index: 100;
+}
+
+.partie_droite {
+    background-color: white;
+}
+
+.partie_gauche {
+    background-color: grey;
+}
+
+.text{
+    background-color: grey;
+}
+
+.particularite {
+    padding-left: 15px;
+    background-color: grey;
+}
+
+.logo_image {
+    max-width: 30px;
+
+}
+
+i {
+    font-size: 30px;
+    color: #1c1c6b;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.bandeau {
+    margin-left: 10px;
+}
